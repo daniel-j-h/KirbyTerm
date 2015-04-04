@@ -9,29 +9,24 @@ void out(const char* c) { std::cout << c << std::flush; }
 void clear(int n) { for (int i = 0; i < n; ++i) out("\b"); }
 
 struct Kirby final {
-  Kirby() : state{hand::mid} { out(visual::mid); }
+  Kirby() { out(visual::mid); }
 
   void left() {
     clear(visual::size);
     out(visual::left);
-    state = hand::left;
   }
 
   void mid() {
     clear(visual::size);
     out(visual::mid);
-    state = hand::mid;
   }
 
   void right() {
     clear(visual::size);
     out(visual::right);
-    state = hand::right;
   }
 
 private:
-  enum class hand { left, mid, right } state;
-
   struct visual {
     static const int size;
     static const char* left;
